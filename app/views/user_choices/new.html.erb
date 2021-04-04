@@ -7,7 +7,7 @@
         <p>→ acesse seu painel de administração no topo da tela.</p>
       <% else %>
         <h1><b>olá, <%= current_user.name %>.</b></h1>
-        <% if Collection.last.active == false %>
+        <% if Collection.last.active == false || nil %>
         <br>
           <h3>neste momento, <br> não existem novas <br> coleções disponíveis. </h3>
         <% else %>
@@ -15,12 +15,14 @@
         <% end %>
       <% end %>
       <br>
+      <% unless Collection.last == nil %>
       <% unless Collection.last.active == false %> <p class="botao2"> COLEÇÃO <%= Collection.last.name.upcase %> </p> <% end %>
+      <% end %>
     </div>
   </div>
 
   <br>
-
+  <% unless Collection.last == nil %>
   <% if  Collection.last.active == true %>
     <div class="main-form">
       <%= simple_form_for :user_choice, wrapper: :horizontal_collection_inline, url: '/user_choices' do |f| %>
@@ -34,6 +36,7 @@
       <% end %>
 
     </div>
+  <% end %>
   <% end %>
 
 </div>

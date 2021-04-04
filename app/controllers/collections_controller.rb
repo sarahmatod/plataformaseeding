@@ -19,9 +19,11 @@ class CollectionsController < ApplicationController
   end
 
   def create
+    unless Collection.last == nil
     last_collection = Collection.last
     last_collection.active = false
     last_collection.save
+    end
 
     @collection = Collection.new(collection_params)
     @collection.user = current_user
