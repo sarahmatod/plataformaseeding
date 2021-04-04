@@ -1,0 +1,9 @@
+.fixed-title {
+  width: 100%;
+  background-color: white;
+  margin-top: 70px;
+  padding-top: 50px;
+  z-index: 9999;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+}

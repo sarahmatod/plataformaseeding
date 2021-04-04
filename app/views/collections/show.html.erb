@@ -1,0 +1,67 @@
+<div class="fixed-title" style="padding-bottom: 24px; border-bottom: 1px solid black;">
+  <div style="padding-left: 120px;">
+    <h1><b>resultados:</b></h1>
+      <ul class="nav nav-pills" id="myTab" role="tablist">
+        <li class="nav-item">
+          <a class="botao2" id="client-tab" data-toggle="tab" href="#client" role="tab" aria-controls="client" aria-selected="false">POR CLIENTE</a>
+        </li>
+        <li class="nav-item">
+          <a class="botao2" id="product-tab" data-toggle="tab" href="#product" role="tab" aria-controls="product" aria-selected="true">POR PRODUTO</a>
+        </li>
+      </ul>
+  </div>
+</div>
+
+
+<div class="tab-content" style="margin-top: 200px; padding-left: 96px; padding-right: 96px; padding-top: 36px;">
+
+    <div class="tab-pane active" id="product" role="tabpanel" aria-labelledby="product-tab">
+    <% @items.each do |item| %>
+      <div class="row" style="padding-right: 36px;">
+        <div class="col-3">
+          <%= cl_image_tag item.photo, class: "img-shoe", height: 60 %>
+        </div>
+        <div class="col-3">
+          <h5><%= item.name.upcase.split('.')[0] %></h5>
+        </div>
+        <div class="col-6 text-right">
+          <h5><%= item.votes.count %></h5>
+        </div>
+      </div>
+      <hr>
+    <% end %>
+    </div>
+
+
+  <div class="tab-pane" id="client" role="tabpanel" aria-labelledby="client-tab">
+    <div class="tab-pane" id="product" role="tabpanel" aria-labelledby="product-tab">
+    <% @collection.user_choices.each do |user_choice| %>
+
+    <div class="row" style="margin-bottom: 18px;">
+
+      <div class="col-3">
+        <h3><%= user_choice.user.name %> </h3><br>
+        <% instagram = user_choice.user.instagram.upcase.gsub('@','').gsub(/(https:\/\/)*(www.)*(instagram.com)\//, '').gsub('/','') %>
+            <p><%= link_to "@#{instagram}", "https://www.instagram.com/#{instagram}", target:'_blank' %></p>
+        <p><%= user_choice.user.email.upcase %></p>
+        <p>NUMERAÇÃO: <%= user_choice.user.numer %> </p>
+      </div>
+
+      <div class="col-8 results-grid">
+        <% user_choice.items.each do |item| %>
+          <div> <%= cl_image_tag item.photo, class: "img-shoe", height: 60 %>
+          <p style="font-size: 7pt"> <%= item.name.split('.')[0] %> </p>
+          </div>
+        <% end %>
+      </div>
+
+    </div>
+    <hr>
+    <% end %>
+    </div>
+  </div>
+
+
+</div>
+
+

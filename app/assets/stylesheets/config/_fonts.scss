@@ -1,9 +1,25 @@
 // Import Google fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Work+Sans:400,700&display=swap');
+//@import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Work+Sans:400,700&display=swap');
 
 // Define fonts for body and headers
-$body-font: "Work Sans", "Helvetica", "sans-serif";
-$headers-font: "Nunito", "Helvetica", "sans-serif";
+//$body-font: "Work Sans", "Helvetica", "sans-serif";
+//$headers-font: "Nunito", "Helvetica", "sans-serif";
+
+@font-face {
+    font-family: 'Effra';
+    src: url('../../fonts/Effra_Std_Rg.ttf');
+}
+
+
+// To use a font file (.woff) uncomment following lines
+
+// Define fonts for body and headers
+$body-font: "Effra";
+$headers-font: "Effra";
+
+
+
+// $my-font: "Font Name";
 
 // To use a font file (.woff) uncomment following lines
 // @font-face {

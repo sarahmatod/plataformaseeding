@@ -1,0 +1,73 @@
+<div class="display-grid" style="height: 100vh">
+
+  <div class="scrollbar" style="padding-left: 120px; border-right: 1px solid black;">
+    <div style="padding-top: 110px;">
+      <h1><b>campanhas</b></h1>
+      <%= link_to "CRIAR NOVA CAMPANHA", new_collection_path, class: "botao2" %>
+      <br>
+      <br>
+
+      <% @collections.each do |collection| %>
+
+        <div style="width: 80%; padding: 12px; background-color: #F4F4EE; border-radius: 4px;">
+           <h2><%= collection.name %> </h2><br>
+           <p><%= link_to "fotos", edit_collection_path(collection), class: "botao2" %> <%= link_to "add. fotos", edit_collection_path(collection), class: "botao2" %> <%= link_to "resultados", collection_path(collection), class: "botao2" %> </p>
+           <% if collection == Collection.last %>
+           <hr>
+           <p> <% if collection.active == false %>  <%= link_to "ATIVAR", getavailable_path(collection), class: "btn-sm-bl" %>  <% else %> <%= link_to "DESATIVAR", getunavailable_path(collection), class: "btn-sm-bl" %> <% end %> </p>
+            <% end %>
+
+         </div>
+         <br>
+      <% end %>
+    </div>
+  </div>
+
+
+
+  <div style="margin-top: 120px; padding-left: 15%; width: 90%;">
+
+    <div class="fixed-title">
+    <h2><b> <%= @collection.name.upcase %></b></h2>
+    </div>
+
+    <div>
+    <div style="border: 1px solid black; border-radius: 20px; padding: 24px; margin-top: 90px">
+    <div style="width: 50%;">
+      <h4 style="padding-bottom: 0; margin-bottom: 0;"><b>adicione novas fotos:</b></h4>
+      <div style="color: white; padding-top: 0; margin-top: 0">
+    <%= simple_form_for :collection, url: collection_path(@collection), method: :patch do |f| %>
+     <%= f.input :photos, label: ' ', as: :file, input_html: { multiple: true } %>
+     <%= f.button :submit, 'SALVAR' %>
+     <% end %>
+     </div>
+     </div>
+  </div>
+
+
+    <div style="margin-top: 36px;">
+      <hr>
+      <h4><b>fotos:</b></h4>
+      <div class="mini-fotos">
+        <% @items.each do |item| %>
+          <div>
+            <p class="small-text"> <%= link_to "×",
+              item_path(@item),
+              method: :delete %> </p>
+          <%= cl_image_tag item.photo, class: "img-shoe", height: 90, crop: :fill %>
+          <p class="small-text"> <%= item.name.split('.')[0] %> </p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+
+
+  </div>
+
+
+</div>
+
+
+

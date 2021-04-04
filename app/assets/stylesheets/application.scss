@@ -11,3 +11,26 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+body {
+  background-color: white;
+}
+
+.container {
+  padding: 50px;
+  margin-top: 70px;
+}
+
+h1 {
+  font-size: 48px;
+  line-height: 1;
+}
+
+.inputs {
+  margin-top: 36px;
+}
+
+p {
+  font-size: 10pt;
+  line-height: 1;
+}

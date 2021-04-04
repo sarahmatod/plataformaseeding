@@ -1,0 +1,18 @@
+.btn-sm-bl {
+  font-size: 12px;
+  padding: 4px 16px 4px 16px;
+  border-radius: 20px;
+  text-decoration: none;
+  color: #F4F4EE;
+  margin-right: 8px;
+  text-align: center;
+  background-color: black;
+
+  &:hover {
+    transition: 1s;
+    background-color: $dark-gray;
+    text-decoration: none;
+    color: white;
+  }
+
+}

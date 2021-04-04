@@ -1,12 +1,33 @@
-.navbar-lewagon {
-  justify-content: space-between;
-  background: white;
+.navbar-fixed-top {
+  height: 70px;
+  overflow: hidden;
+  z-index: 9999;
+  background-color: white;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+  padding: 16px;
+  border-bottom: 1px solid black;
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
+.row {
+  position: relative;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+
+#logo {
+  height: 40px;
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+
+
+
+}
+
+.inline-list {
+  display: inline;
+  position: absolute;
+  right: 12px;
 }

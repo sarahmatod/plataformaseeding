@@ -1,0 +1,52 @@
+<div class="display-grid" style="height: 100vh">
+
+  <div class="scrollbar" style="padding-left: 120px; border-right: 1px solid black;">
+    <div style="padding-top: 110px;">
+      <h1><b>campanhas</b></h1>
+
+      <br>
+      <br>
+
+      <% @collections.each do |collection| %>
+
+        <div style="width: 80%; padding: 12px; background-color: #F4F4EE; border-radius: 4px;">
+           <h2><%= collection.name %> </h2><br>
+           <p><%= link_to "fotos", edit_collection_path(collection), class: "botao2" %> <%= link_to "add. fotos", edit_collection_path(collection), class: "botao2" %> <%= link_to "resultados", collection_path(collection), class: "botao2" %> </p>
+           <% if collection == Collection.last %>
+           <hr>
+           <p> <% if collection.active == false || nil %>  <%= link_to "ATIVAR", getavailable_path(collection), class: "btn-sm-bl" %>  <% else %> <%= link_to "DESATIVAR", getunavailable_path(collection), class: "btn-sm-bl" %> <% end %> </p>
+            <% end %>
+
+         </div>
+         <br>
+      <% end %>
+    </div>
+  </div>
+
+
+
+
+
+  <div class="scrollbar">
+  <div style="margin-top: 110px; padding-left: 60px; width: 60%;">
+
+    <h1><b>crie uma nova <br> campanha</b></h1>
+    <br>
+
+    <%= simple_form_for(@collection) do |f| %>
+      <%= f.input :name, label: 'nome da campanha:' %>
+      <%= f.input :photos, label: 'fotos:', as: :file, input_html: { multiple: true } %>
+      <br>
+      <%= f.button :submit, 'SALVAR' %>
+    <% end %>
+
+  </div>
+  </div>
+
+
+</div>
+
+
+
+
+

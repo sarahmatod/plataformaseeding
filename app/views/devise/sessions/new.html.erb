@@ -1,20 +1,30 @@
-<h2>Log in</h2>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-4" style="margin-left: 18px;">
+<h1><b>bem vinda à <br> nova coleção <br> Luiza Barcelos<b></h1>
 
+<div class="inputs">
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
   <div class="form-inputs">
     <%= f.input :email,
+     label: 'email',
                 required: false,
-                autofocus: true,
+
                 input_html: { autocomplete: "email" } %>
     <%= f.input :password,
+     label: 'senha',
                 required: false,
                 input_html: { autocomplete: "current-password" } %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
+    <%= f.button :submit, "INICIAR SESSÃO" %>
   </div>
 <% end %>
-
+</div>
+<br>
 <%= render "devise/shared/links" %>
+</div>
+</div>
+</div>

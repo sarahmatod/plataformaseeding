@@ -1,0 +1,20 @@
+.main-form {
+  position: relative;
+}
+
+.form-button {
+  position: absolute;
+  width: 30%;
+  right: 10px;
+}
+
+.image-form {
+  width: 300px;
+}
+
+
+.form-check {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 0px;
+}

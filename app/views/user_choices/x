@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Parcel Sandbox</title>
+    <meta charset="UTF-8" />
+  </head>
+
+  <body>
+    <div id="app">
+      <form>
+        <div class="photoPicker">
+        <input type="checkbox" id="photo1" name="vehicle1" value="Bike" />
+        <label for="photo1">
+          <img src="http://placehold.it/600x600" width="600" height="600"/>
+        </label>
+      </form>
+      <form>
+        <input type="checkbox" id="photo2" name="vehicle1" value="Bike" />
+        <label for="photo2"
+          ><img src="http://placehold.it/600x600" width="600" height="600"
+        /></label>
+      </form>
+      <form>
+        <input type="checkbox" id="photo3" name="vehicle1" value="Bike" />
+        <label for="photo3"
+          ><img src="http://placehold.it/600x600" width="600" height="600"
+        /></label>
+      </form>
+      <form>
+        <input type="checkbox" id="photo4" name="vehicle1" value="Bike" />
+        <label for="photo4"
+          ><img src="http://placehold.it/600x600" width="600" height="600"
+        /></label>
+      </div>
+      </form>
+    </div>
+
+    <script src="src/index.js"></script>
+  </body>
+</html>
+
