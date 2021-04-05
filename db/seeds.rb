@@ -3,8 +3,13 @@
 #
 # Examples:
 
-User.create(name: "equipeluizabarcelos", instagram: "luizabarcelos", email: "equipe@luizabarcelos.com", encrypted_password: "1234567890",  numer: 0, admin: true)
-
-Collection.create(name: "inverno 2021", active: false)
+User.create(
+    admin: true,
+    email: 'admin@luizabarcelos.com',
+    name: 'equipe',
+    instagram: 'luizabarcelos',
+    numer: 36,
+    password: '123123',
+    password_confirmation: '123123')
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
