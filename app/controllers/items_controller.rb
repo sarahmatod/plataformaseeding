@@ -1,9 +1,12 @@
 class ItemsController < ApplicationController
-    before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
 
 
 def new
   @item = Item.new()
+end
+
+def show
 end
 
 def index
@@ -13,7 +16,7 @@ end
 def destroy
   @collection = @item.collection
   @item.destroy
-  redirect_to edit_collection_pathcollection_path(@collection)
+  redirect_to edit_collection_path(@collection)
 
   authorize @item
 end
