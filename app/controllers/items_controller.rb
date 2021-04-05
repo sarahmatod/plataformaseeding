@@ -13,7 +13,7 @@ end
 def destroy
   @collection = @item.collection
   @item.destroy
-  redirect_to collection_path(@collection)
+  redirect_to edit_collection_pathcollection_path(@collection)
 
   authorize @item
 end
