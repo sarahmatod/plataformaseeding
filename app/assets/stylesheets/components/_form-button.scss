@@ -3,18 +3,64 @@
 }
 
 .form-button {
+  margin-top: 44px;
   position: absolute;
   width: 30%;
   right: 10px;
+  margin-bottom: 44px;
 }
 
-.image-form {
-  width: 300px;
+.image-form {}
+// aqui vc insere o tamanho da imagem - pra ve se ela ja gera
+
+.user_choice .check_boxes {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
+.user_choice .col-form-label {
+    width: 100%;
+}
 
-.form-check {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 0px;
+.user_choice .form-check input[type="checkbox"] {
+  display: none;
+}
+
+.user_choice .form-check label {
+  display: block;
+}
+
+.user_choice .form-check input[type="checkbox"] + label {
+  margin: 1rem;
+  width: 350px;
+  height: 350px;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative; // sem isso aqui o coração vai ficar deslocado
+}
+
+.user_choice .form-check input[type="checkbox"] + label img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  transition: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.user_choice .form-check input[type="checkbox"]:checked + label {
+  background: black;
+}
+.user_choice .form-check input[type="checkbox"]:checked + label img {
+  transform: scale(1.1);
+  opacity: 0.3;
+}
+.user_choice .form-check input[type="checkbox"]:checked + label:before {
+  height: 4rem;
+  width: 4rem;
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
 }
