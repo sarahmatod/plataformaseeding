@@ -6,28 +6,25 @@
   position: fixed; /* Set the navbar to fixed position */
   top: 0; /* Position the navbar at the top of the page */
   width: 100%; /* Full width */
-  padding: 16px;
+  padding-top: 20px;
   border-bottom: 1px solid black;
 }
 
-.row {
+.navbar-row {
   position: relative;
 }
 
 
 #logo {
-  height: 40px;
   position: absolute;
   margin: auto;
   left: 0;
   right: 0;
-
-
-
 }
 
-.inline-list {
+.navbar-inline-list {
   display: inline;
   position: absolute;
   right: 12px;
 }
+

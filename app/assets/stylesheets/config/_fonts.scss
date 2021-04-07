@@ -5,28 +5,28 @@
 //$body-font: "Work Sans", "Helvetica", "sans-serif";
 //$headers-font: "Nunito", "Helvetica", "sans-serif";
 
-@font-face {
-    font-family: 'Effra';
-    src: url('../../fonts/Effra_Std_Rg.ttf');
-}
-
 
 // To use a font file (.woff) uncomment following lines
 
 // Define fonts for body and headers
-$body-font: "Effra";
-$headers-font: "Effra";
 
 
 
 // $my-font: "Font Name";
 
 // To use a font file (.woff) uncomment following lines
-// @font-face {
-//   font-family: "Font Name";
-//   src: font-url('FontFile.eot');
-//   src: font-url('FontFile.eot?#iefix') format('embedded-opentype'),
-//        font-url('FontFile.woff') format('woff'),
-//        font-url('FontFile.ttf') format('truetype')
-// }
-// $my-font: "Font Name";
+ @font-face {
+   font-family: "Effra Regular";
+   src: font-url('../../fonts/effra_std_rg-webfont.woff');
+   src: font-url('effra_std_rg-webfont.woff') format('woff')
+ }
+
+  @font-face {
+   font-family: "Effra Bold";
+   src: font-url('../../fonts/effra_std_bd-webfont.woff');
+   src: font-url('effra_std_bd-webfont.woff') format('woff')
+ }
+
+
+$body-font: "Effra Regular";
+$headers-font: "Effra Bold";

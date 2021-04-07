@@ -6,7 +6,7 @@
         <h2> bem vinda, <br>equipe Luiza Barcelos. </h2>
         <p>→ acesse seu painel de administração no topo da tela.</p>
       <% else %>
-        <h1><b>olá, <%= current_user.name %>.</b></h1>
+        <h1 style="font-size: 46px;"><b>olá, <%= current_user.name %>.</b></h1>
         <% if Collection.last == nil || Collection.last.active == false || nil %>
         <br>
           <h3>neste momento, <br> não existem novas <br> coleções disponíveis. </h3>
@@ -25,9 +25,9 @@
   <% unless Collection.last == nil %>
   <% if  Collection.last.active == true %>
     <div class="main-form">
-      <%= simple_form_for :user_choice, wrapper: :horizontal_collection_inline, url: '/user_choices' do |f| %>
+      <%= simple_form_for :user_choice, url: '/user_choices' do |f| %>
         <%= f.input :vote,
-                    collection: @library.map { |item| cl_image_tag item, class: "image-form" },
+                    collection: @library.map { |item| cl_image_tag item, width: 100, class: "image-form" },
                     as: :check_boxes,
                     required: true,
                     include_blank: false,

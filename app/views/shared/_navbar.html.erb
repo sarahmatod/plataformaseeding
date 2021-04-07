@@ -1,15 +1,15 @@
 <div class="navbar-fixed-top navbar-expand-sm navbar-light">
-  <div class="row">
+  <div class="navbar-row">
 
     <%= link_to root_path do %>
-   <%= image_tag "https://res.cloudinary.com/dbmlsid8q/image/upload/v1616279579/logo_luiza_barcelos_lwjwuv.png", id: "logo" %>
+    <%= image_tag "https://res.cloudinary.com/dbmlsid8q/image/upload/v1616279579/logo_luiza_barcelos_lwjwuv.png", height: 40, id: "logo" %>
     <% end %>
 
 
       <% if user_signed_in? %>
 
 
-      <ul class="inline-list">
+      <ul class="navbar-inline-list">
         <% if policy(Collection).new? %>
           <li> <%= link_to "admin", new_collection_path, class: "botao2" %> </li>
         <% end %>
@@ -20,7 +20,7 @@
       <% else %>
 
 
-      <ul class="inline-list">
+      <ul class="navbar-inline-list">
         <% if controller_name != 'sessions' %>
         <%= link_to "login", new_session_path(resource_name), class: "botao2" %>
         <% end %>

@@ -3,6 +3,29 @@
 #
 # Examples:
 
+# cleaning all database
+Vote.all.each do |vote|
+  vote.delete
+end
+
+UserChoice.all.each do |choice|
+  choice.delete
+end
+
+Item.all.each do |item|
+  item.delete
+end
+
+Collection.all.each do |collection|
+  collection.delete
+end
+
+User.all.each do |user|
+  user.delete
+end
+
+#seeding main user
+
 User.create(
     admin: true,
     email: 'admin@luizabarcelos.com',

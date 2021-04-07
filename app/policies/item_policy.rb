@@ -6,6 +6,17 @@ class ItemPolicy < ApplicationPolicy
   end
 
   def destroy?
-    true
+    admin?
   end
+
+  def show?
+    admin?
+  end
+
+    private
+
+  def admin?
+    user.admin == true
+  end
+
 end

@@ -18,21 +18,53 @@ body {
   background-color: white;
 }
 
-.container {
-  padding: 50px;
-  margin-top: 70px;
-}
-
 h1 {
   font-size: 48px;
   line-height: 1;
 }
 
-.inputs {
-  margin-top: 36px;
+h2 {
+  font-size: 36px;
 }
 
 p {
   font-size: 10pt;
   line-height: 1;
 }
+
+/// portrait mobile - xs
+
+@media (max-width: 576px) {
+  h1 {
+    font-size: 36px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  .container {
+    padding: 36px;
+  }
+
+  #logo {
+    height: 30px;
+    margin-left: 36px;
+    }
+
+   /// navbar
+   .navbar-inline-list {
+    display: inline;
+    position: absolute;
+    right: 8px;
+}
+
+
+}
+
+/// landscape mobile - sm
+
+/// tablet - md
+
+/// computer -> default
+

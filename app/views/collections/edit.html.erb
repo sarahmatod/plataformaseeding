@@ -52,7 +52,7 @@
         <% @items.each do |item| %>
           <div>
             <p class="small-text"> <%= link_to "×",
-              item_path(@item),
+              item_path(item),
               method: :delete %> </p>
           <%= cl_image_tag item.photo, class: "img-shoe", height: 90, crop: :fill %>
           <p class="small-text"> <%= item.name.split('.')[0] %> </p>
@@ -61,7 +61,6 @@
       </div>
     </div>
   </div>
-
 
 
   </div>

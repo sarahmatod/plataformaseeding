@@ -79,7 +79,6 @@ class CollectionsController < ApplicationController
 
 
     @items = Item.all.where(collection: @collection)
-    @collections = Collection.all.order(created_at: :desc)
 
     @items.each do |item|
       @item = item
