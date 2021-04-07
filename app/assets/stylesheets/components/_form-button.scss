@@ -14,8 +14,10 @@
   margin-bottom: 44px;
 }
 
-.image-form {}
-// aqui vc insere o tamanho da imagem - pra ve se ela ja gera
+.image-form {
+  height: 200px;
+}
+
 
 .user_choice .check_boxes {
     display: flex;
