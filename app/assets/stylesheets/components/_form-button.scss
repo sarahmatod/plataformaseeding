@@ -9,9 +9,9 @@
 .form-button {
   margin-top: 44px;
   position: absolute;
-  width: 30%;
+  width: 20%;
   right: 10px;
-  margin-bottom: 44px;
+  bottom: -72px;
 }
 
 .image-form {
@@ -21,7 +21,7 @@
 
 .user_choice .check_boxes {
     display: flex;
-    flex-direction: row;
+    justify-content: space-evenly;
     flex-wrap: wrap;
 }
 
@@ -38,12 +38,11 @@
 }
 
 .user_choice .form-check input[type="checkbox"] + label {
-  margin: 1rem;
-  width: 350px;
-  height: 350px;
+  margin-bottom: 2rem;
+  width: 380px;
   border-radius: 4px;
   overflow: hidden;
-  position: relative; // sem isso aqui o coração vai ficar deslocado
+ // position: relative; // sem isso aqui o coração vai ficar deslocado
 }
 
 .user_choice .form-check input[type="checkbox"] + label img {

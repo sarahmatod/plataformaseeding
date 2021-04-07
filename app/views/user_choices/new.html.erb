@@ -20,11 +20,14 @@
       <% end %>
     </div>
   </div>
+</div>
 
   <br>
+
+<div class="main-form">
+
   <% unless Collection.last == nil %>
   <% if  Collection.last.active == true %>
-    <div class="main-form">
       <%= simple_form_for :user_choice, url: '/user_choices' do |f| %>
         <%= f.input :vote,
                     collection: @library.map { |item| cl_image_tag item, class: "image-form" },
@@ -32,12 +35,12 @@
                     required: true,
                     include_blank: false,
                     include_hidden: false %>
+                    <br>
         <%= f.button :submit, 'ENVIAR', class: "form-button" %>
       <% end %>
-
-    </div>
   <% end %>
   <% end %>
 
-</div>
+  </div>
+
 
