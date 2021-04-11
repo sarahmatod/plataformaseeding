@@ -19,22 +19,8 @@ class CollectionsController < ApplicationController
 
   def create
     active_false
-
     @collection = Collection.create(name: collection_params[:name], user: current_user, active: false)
     add_shoes_to_collection
-
-    #@collection = Collection.new(collection_params)
-    # @collection.user = current_user
-    #@collection.active = false
-    #@collection.save
-
-    # @collection.photos.each do |photo|
-      # item = Item.new()
-      # item.name = photo.blob.filename
-      # item.photo = photo.key
-      # item.collection_id = @collection.id
-      # item.save!
-    #end
     redirect_to edit_collection_path(@collection)
   end
 
@@ -81,17 +67,8 @@ class CollectionsController < ApplicationController
   end
 
   def update
-    unless @collection.photos == [] || nil
-    @collection.update(collection_params)
+    unless collection_params[:photos] == [] || nil
     add_shoes_to_collection
-
-    #@collection.photos.each do |photo|
-     # item = Item.new()
-     # item.name = photo.blob.filename
-     # item.photo = photo.key
-     # item.collection_id = @collection.id
-     # item.save!
-    # end
     end
     redirect_to edit_collection_path(@collection)
   end

@@ -4,18 +4,16 @@ class UserChoicesController < ApplicationController
     authorize UserChoice
 
     last_active_collection = Collection.where(active: true).last
-    last_collection = Item.all.where(collection: last_active_collection)
-    @library = last_collection.map do |item|
-      item.photo
-    end
+    @last_collection = Item.all.where(collection: last_active_collection)
     @user_voted = UserChoice.where(collection: last_active_collection, user: current_user)
   end
 
   def create
     authorize UserChoice
     set_user_choice
-    user_choice_params[:vote].each do |item|
-      code = item.split('upload/')[1][0..-5]
+    user_choice_params[:vote].each do |shoe|
+
+      code = shoe.split('upload/')[1][0..-5]
       Vote.create(user_choice: @user_choice, item: Item.find_by_photo(code))
     end
     redirect_to thankyou_path
