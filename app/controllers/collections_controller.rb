@@ -1,46 +1,50 @@
 class CollectionsController < ApplicationController
-  before_action :set_collection, only: [:show, :edit, :update, :destroy]
+  before_action :set_collection, only: %i[show edit update]
+  before_action do
+    authorize(Collection)
+  end
 
-
+  # SHOW => RESULTS PAGES
   def show
-    authorize @collection
-
-    no_zero = @collection.items.select do |item|
+    no_zero_votes = @collection.items.select do |item|
       item.votes.count >= 1
     end
-
-    @items = no_zero.sort_by { |item| item.votes.count}.reverse
+    @items = no_zero_votes.sort_by { |item| item.votes.count }.reverse
   end
 
   def new
-      @collections = Collection.all.order(created_at: :desc)
-      @collection = Collection.new()
-      authorize @collection
+    @collections = Collection.all.order(created_at: :desc)
+    @collection = Collection.new
   end
 
   def create
+    active_false
+
+    @collection = Collection.create(name: collection_params[:name], user: current_user, active: false)
+    add_shoes_to_collection
+
+    #@collection = Collection.new(collection_params)
+    # @collection.user = current_user
+    #@collection.active = false
+    #@collection.save
+
+    # @collection.photos.each do |photo|
+      # item = Item.new()
+      # item.name = photo.blob.filename
+      # item.photo = photo.key
+      # item.collection_id = @collection.id
+      # item.save!
+    #end
+    redirect_to edit_collection_path(@collection)
+  end
+
+  #desativando collection a medida que crio uma nova
+  def active_false
     unless Collection.last == nil
     last_collection = Collection.last
     last_collection.active = false
     last_collection.save
     end
-
-    @collection = Collection.new(collection_params)
-    @collection.user = current_user
-    @collection.active = false
-    @collection.save
-
-    @collection.photos.each do |photo|
-      item = Item.new()
-      item.name = photo.blob.filename
-      item.photo = photo.key
-      item.collection_id = @collection.id
-      item.save!
-    end
-
-    authorize @collection
-
-    redirect_to edit_collection_path(@collection)
   end
 
   def available
@@ -49,8 +53,6 @@ class CollectionsController < ApplicationController
     @collection.save
 
     redirect_to root_path
-
-    authorize @collection
   end
 
   def getavailable
@@ -63,8 +65,6 @@ class CollectionsController < ApplicationController
     @collection.save
 
     redirect_to root_path
-
-    authorize @collection
   end
 
   def getunavailable
@@ -73,39 +73,38 @@ class CollectionsController < ApplicationController
 
 
   def edit
-    authorize @collection
-
     @collections = Collection.all.order(created_at: :desc)
-
-
     @items = Item.all.where(collection: @collection)
-
     @items.each do |item|
       @item = item
     end
-
   end
 
   def update
-
     unless @collection.photos == [] || nil
-
     @collection.update(collection_params)
+    add_shoes_to_collection
 
-    @collection.photos.each do |photo|
-      item = Item.new()
-      item.name = photo.blob.filename
-      item.photo = photo.key
-      item.collection_id = @collection.id
-      item.save!
+    #@collection.photos.each do |photo|
+     # item = Item.new()
+     # item.name = photo.blob.filename
+     # item.photo = photo.key
+     # item.collection_id = @collection.id
+     # item.save!
+    # end
     end
-  end
-      authorize @collection
-
-      redirect_to edit_collection_path(@collection)
+    redirect_to edit_collection_path(@collection)
   end
 
   private
+
+  def add_shoes_to_collection
+    collection_params[:photos].each do |photo|
+      Item.create(collection: @collection,
+                  name: photo.original_filename,
+                  photo: photo)
+    end
+  end
 
   def collection_params
     params.require(:collection).permit(:name, photos: [])
@@ -114,6 +113,4 @@ class CollectionsController < ApplicationController
   def set_collection
     @collection = Collection.find(params[:id])
   end
-
-
 end
