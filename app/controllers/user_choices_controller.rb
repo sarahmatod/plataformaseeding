@@ -11,10 +11,15 @@ class UserChoicesController < ApplicationController
   def create
     authorize UserChoice
     set_user_choice
-    user_choice_params[:vote].each do |shoe|
 
-      code = shoe.split('upload/')[1][0..-5]
-      Vote.create(user_choice: @user_choice, item: Item.find_by_photo(code))
+    last_active_collection = Collection.where(active: true).last
+    @last_collection = Item.all.where(collection: last_active_collection)
+
+    user_choice_params[:vote].each do |vote|
+      image_code = vote.split('upload/')[1][0..-5]
+      matched = @last_collection.select { |shoe| shoe.photo.key == image_code }
+      voted_shoe = matched.first
+      Vote.create(user_choice: @user_choice, item: Item.find(voted_shoe.id))
     end
     redirect_to thankyou_path
   end

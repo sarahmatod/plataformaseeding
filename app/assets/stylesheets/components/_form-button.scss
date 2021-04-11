@@ -55,19 +55,23 @@
 
 .user_choice .form-check input[type="checkbox"]:checked + label {
   border: 2px solid black;
-  background: #F5A9AE;
+  background: black;
 }
 .user_choice .form-check input[type="checkbox"]:checked + label img {
   transform: scale(1.1);
   opacity: 0.3;
 }
+
 .user_choice .form-check input[type="checkbox"]:checked + label:before {
-  //height: 4rem;
-  //width: 4rem;
+  height: 6rem;
+  width: 6rem;
+  z-index: 2;
   content: "";
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: white;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24' fill='white' stroke='rgb(255,255,255)' stroke-width='.5' stroke-linecap='butt' stroke-linejoin='arcs'%3E%3Cpath d='M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z'%3E%3C/path%3E%3C/svg%3E");
+  //background: url('https://res.cloudinary.com/dbmlsid8q/image/upload/v1618173702/heart_1_ozhikd.svg') no-repeat center center;
+  background-size: 100%;
 }
