@@ -14,10 +14,14 @@
   bottom: -72px;
 }
 
-//.image-form {
-  //height: 200px;
-//}
-
+@media (max-width: 576px) {
+  .form-button {
+    width: 100%;
+    right: 0;
+    left: 0;
+    bottom: 0;
+  }
+}
 
 .user_choice .check_boxes {
     display: flex;
@@ -46,6 +50,12 @@
  // position: relative; // sem isso aqui o coração vai ficar deslocado
 }
 
+@media (max-width: 576px) {
+  .user_choice .form-check input[type="checkbox"] + label {
+    width: 300px;
+  }
+}
+
 .user_choice .form-check input[type="checkbox"] + label img {
   height: 100%;
   width: 100%;
@@ -54,7 +64,6 @@
 }
 
 .user_choice .form-check input[type="checkbox"]:checked + label {
-  border: 2px solid black;
   background: black;
 }
 .user_choice .form-check input[type="checkbox"]:checked + label img {
