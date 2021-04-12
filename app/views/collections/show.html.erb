@@ -42,13 +42,13 @@
       <div class="col-4" style="padding-right: 24px;">
         <h3><%= user_choice.user.name %> <%= user_choice.user.surname %> </h3><br>
         <% instagram = user_choice.user.instagram.upcase.gsub('@','').gsub(/(https:\/\/)*(www.)*(instagram.com)\//, '').gsub('/','') %>
-        <p><%= link_to "@#{instagram}", "https://www.instagram.com/#{instagram}", target:'_blank' %> <br>
-        <%= user_choice.user.email.downcase %> <br>
-        NUMERAÇÃO: <%= user_choice.user.numer %> <br>
-        CPF/CNPJ: <%= user_choice.user.doc %> | RG: <%= user_choice.user.rg %><br>
-        NASCIMENTO: <%= user_choice.user.birth %> <br>
-        <%= user_choice.user.street %> <br>
-        CEP: <%= user_choice.user.cep %>
+        <p>instagram:<%= link_to "@#{instagram.downcase}", "https://www.instagram.com/#{instagram}", target:'_blank' %> <br>
+        e-mail: <%= user_choice.user.email.downcase %> <br>
+        numeração: <%= user_choice.user.numer %> </p>
+        <p>cpf–cnpj: <%= user_choice.user.doc %> | rg: <%= user_choice.user.rg %> <br>
+        nascimento: <%= user_choice.user.birth %> </p>
+        <p>end.: <%= user_choice.user.street %> <br>
+        cep: <%= user_choice.user.cep %>
         </p>
       </div>
 
