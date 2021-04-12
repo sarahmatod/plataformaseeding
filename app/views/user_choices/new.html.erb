@@ -30,7 +30,7 @@
   <% if  Collection.last.active == true %>
       <%= simple_form_for :user_choice, url: '/user_choices' do |f| %>
         <%= f.input :vote,
-                    collection: @last_collection.map { |item| cl_image_tag item.photo.key },
+                    collection: @last_collection.map { |item| cl_image_tag item.photo.key, width: 400 },
                     as: :check_boxes,
                     required: true,
                     include_blank: false,
