@@ -15,6 +15,11 @@
                       required: true,
                       input_html: { autocomplete: "nome" } %>
 
+          <%= f.input :surname,
+                      label: 'sobrenome',
+                      required: true,
+                      input_html: { autocomplete: "sobrenome" } %>
+
           <%= f.input :instagram,
            label: 'instagram',
                       required: true,
@@ -25,32 +30,53 @@
            label: 'numeração de calçado',
                       required: true,
                       input_html: { autocomplete: "numeração" } %>
+
           <%= f.input :email,
            label: 'e-mail',
                       required: true,
                       autofocus: true,
                       input_html: { autocomplete: "email" }%>
+
           <%= f.input :doc,
            label: 'cpf | cnpj',
                       required: true,
                       autofocus: true,
                       input_html: { autocomplete: "documento" }%>
+
+          <%= f.input :rg,
+           label: 'rg',
+                      required: true,
+                      autofocus: true,
+                      input_html: { autocomplete: "documento" }%>
+
+          <%= f.input :birth,
+           label: 'data de nascimento',
+                      start_year: Time.now.year - 100,
+                      end_year: Time.now.year,
+                      order: %i(day month year),
+                      required: true,
+                      autofocus: true,
+                      input_html: { autocomplete: "data de nascimento" }%>
+
           <%= f.input :street,
            label: 'endereço',
                       required: true,
                       autofocus: true,
                       placeholder: 'r. lisboa, 33 apt 5 — centro, recife-PE',
                       input_html: { autocomplete: "endereço" }%>
+
           <%= f.input :cep,
            label: 'cep',
                       required: true,
                       autofocus: true,
                       input_html: { autocomplete: "cep" }%>
+
           <%= f.input :password,
            label: 'senha',
                       required: true,
                       hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
                       input_html: { autocomplete: "new-password" } %>
+
           <%= f.input :password_confirmation,
            label: 'confirme sua senha',
                       required: true,
