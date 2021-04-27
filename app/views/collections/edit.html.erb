@@ -56,7 +56,20 @@
               item_path(item),
               method: :delete %> </p>
           <%= cl_image_tag item.photo.key, class: "img-shoe" %>
-          <p class="small-text"> <%= item.name.split('.JPG')[0] %> </p>
+          <p class="small-text">
+             <% if item.name[-3..-1] == 'JPG'%>
+                <%= item.name.split('.JPG')[0]  %>
+             <% elsif item.name[-3..-1] == 'jpg'%>
+                <%= item.name.split('.jpg')[0]  %>
+             <% elsif item.name[-3..-1] == 'PNG'%>
+                <%= item.name.split('.PNG')[0]  %>
+             <% elsif item.name[-3..-1] == 'png'%>
+                <%= item.name.split('.png')[0]  %>
+             <% elsif item.name[-4..-1] == 'JPEG'%>
+                <%= item.name.split('.JPEG')[0]  %>
+             <% elsif item.name[-4..-1] == 'jpeg'%>
+                <%= item.name.split('.jpeg')[0]  %>
+            <% end %> </p>
           </div>
         <% end %>
       </div>
