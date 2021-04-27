@@ -10,7 +10,7 @@
       <% @collections.each do |collection| %>
 
         <div style="width: 80%; padding: 12px; background-color: #F4F4EE; border-radius: 4px;">
-           <h2><%= collection.name %> </h2><br>
+           <h3><%= collection.name %> </h3><br>
            <p><%= link_to "fotos", edit_collection_path(collection), class: "botao2" %> <%= link_to "add. fotos", edit_collection_path(collection), class: "botao2" %> <%= link_to "resultados", collection_path(collection), class: "botao2" %> </p>
            <% if collection == Collection.last %>
            <hr>

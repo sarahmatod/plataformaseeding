@@ -22,7 +22,7 @@
           <%= cl_image_tag item.photo.key, class: "img-shoe" %>
         </div>
         <div class="col-3">
-          <h5><%= item.name.upcase.split('.')[0] %></h5>
+          <h5><%= item.name.upcase.split('.jpeg')[0] %></h5>
         </div>
         <div class="col-6 text-right">
           <h5><%= item.votes.count %></h5>
@@ -55,7 +55,7 @@
       <div class="col-7 results-grid">
         <% user_choice.items.each do |item| %>
           <div> <%= cl_image_tag item.photo.key, class: "img-shoe" %>
-          <p style="font-size: 7pt"> <%= item.name.split('.')[0] %> </p>
+          <p style="font-size: 7pt"> <%= item.name.split('.jpeg')[0] %> </p>
           </div>
         <% end %>
       </div>
