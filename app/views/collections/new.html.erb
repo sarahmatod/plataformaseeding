@@ -35,7 +35,7 @@
 
     <%= simple_form_for(@collection) do |f| %>
       <%= f.input :name, label: 'nome da campanha:' %>
-      <%= f.input :photos, label: 'fotos — arquivos em JPG:', as: :file, input_html: { multiple: true } %>
+      <%= f.input :photos, label: 'fotos', as: :file, input_html: { multiple: true } %>
       <br>
       <%= f.button :submit, 'SALVAR' %>
     <% end %>
