@@ -69,7 +69,7 @@
       <div class="col-7 results-grid">
         <% user_choice.items.each do |item| %>
           <div> <%= cl_image_tag item.photo.key, class: "img-shoe" %>
-          <p style="font-size: 7pt">
+          <p style="font-size: 9pt">
             <% if item.name[-3..-1] == 'JPG'%>
                 <%= item.name.split('.JPG')[0]  %>
              <% elsif item.name[-3..-1] == 'jpg'%>
