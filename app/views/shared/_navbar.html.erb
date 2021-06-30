@@ -14,6 +14,11 @@
           <li> <%= link_to "admin", new_collection_path, class: "botao2" %> </li>
         <% end %>
         <li> <%= link_to "sair", destroy_user_session_path, method: :delete, class: "botao2" %></li>
+        <% if current_user.user_choices != [] && current_user.user_choices[-1].collection == Collection.where(active: true).last %>
+        <% collection = current_user.user_choices[-1].id %>
+        <li> <%= link_to "meus itens", user_choice_path(collection), class: "botao2" %> </li>
+
+        <% end %>
       </ul>
 
 

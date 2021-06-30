@@ -54,16 +54,16 @@
     <div class="row" style="margin-bottom: 18px;">
 
       <div class="col-4" style="padding-right: 24px;">
-        <h3><%= user_choice.user.name %> <%= user_choice.user.surname %> </h3><br>
+        <h3> <%= link_to "#{user_choice.user.name} #{user_choice.user.surname}", user_choice_path(user_choice) %>  </h3><br>
         <% instagram = user_choice.user.instagram.upcase.gsub('@','').gsub(/(https:\/\/)*(www.)*(instagram.com)\//, '').gsub('/','') %>
         <p>instagram:<%= link_to "@#{instagram.downcase}", "https://www.instagram.com/#{instagram}", target:'_blank' %> <br>
         e-mail: <%= user_choice.user.email.downcase %> <br>
         numeração: <%= user_choice.user.numer %> </p>
         <p>cpf–cnpj: <%= user_choice.user.doc %> | rg: <%= user_choice.user.rg %> <br>
         nascimento: <%= user_choice.user.birth %> </p>
-        <p>end.: <%= user_choice.user.street %> <br>
-        cep: <%= user_choice.user.cep %>
-        </p>
+        <p>end.: <%= user_choice.user.street %> <br> </p>
+        cep: <%= user_choice.user.cep %><br>
+        <p>políticas de uso de dados: <% if user_choice.user.politics == true %> concorda  <% else %>  não concorda <% end %> </p>
       </div>
 
       <div class="col-7 results-grid">

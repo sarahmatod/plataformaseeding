@@ -4,7 +4,4 @@ class PagesController < ApplicationController
   def thankyou
   end
 
-  def politics
-  end
-
 end

@@ -3,9 +3,9 @@ class UserChoicesController < ApplicationController
   def new
     authorize UserChoice
 
-    last_active_collection = Collection.where(active: true).last
-    @last_collection = Item.all.where(collection: last_active_collection)
-    @user_voted = UserChoice.where(collection: last_active_collection, user: current_user)
+    @last_active_collection = Collection.where(active: true).last
+    @last_collection = Item.all.where(collection: @last_active_collection)
+    @user_voted = UserChoice.where(collection: @last_active_collection, user: current_user)
   end
 
   def create
@@ -21,14 +21,28 @@ class UserChoicesController < ApplicationController
       voted_shoe = matched.first
       Vote.create(user_choice: @user_choice, item: Item.find(voted_shoe.id))
     end
-    redirect_to thankyou_path
+    redirect_to user_choice_path(@user_choice)
   end
 
   def show
     authorize UserChoice
     set_user_choice
+
+    @votes = current_user.user_choices[-1].votes
   end
 
+  def edit
+    authorize UserChoice
+
+    @last_active_collection = Collection.where(active: true).last
+    @last_collection = Item.all.where(collection: @last_active_collection)
+    @user_voted = UserChoice.where(collection: @last_active_collection, user: current_user)
+
+    @votes = current_user.user_choices[-1].votes
+  end
+
+  def update
+  end
 
   private
 
@@ -40,4 +54,3 @@ class UserChoicesController < ApplicationController
     params.require(:user_choice).permit(vote: [])
   end
 end
-

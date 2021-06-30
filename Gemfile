@@ -31,6 +31,9 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'devise'
 gem 'cloudinary'
 gem 'pundit'
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
+
 
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'

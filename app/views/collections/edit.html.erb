@@ -11,13 +11,13 @@
 
         <div style="width: 80%; padding: 12px; background-color: #F4F4EE; border-radius: 4px;">
            <h3><%= collection.name %> </h3><br>
-           <p><%= link_to "fotos", edit_collection_path(collection), class: "botao2" %> <%= link_to "add. fotos", edit_collection_path(collection), class: "botao2" %> <%= link_to "resultados", collection_path(collection), class: "botao2" %> </p>
+           <p><%= link_to "fotos", edit_collection_path(collection), class: "botao2" %> <%= link_to "add. fotos", edit_collection_path(collection), class: "botao2" %> <%= link_to "resultados", collection_path(collection), class: "botao2" %> <%= link_to "deletar", collection_path(collection), method: :delete, data: { confirm: "DELETAR CAMPANHA?" }, class: "btn-sm-bl" %></p>
            <% if collection == Collection.last %>
            <hr>
            <p> <% if collection.active == false %>  <%= link_to "ATIVAR", getavailable_path(collection), class: "btn-sm-bl" %>  <% else %> <%= link_to "DESATIVAR", getunavailable_path(collection), class: "btn-sm-bl" %> <% end %> </p>
             <% end %>
 
-         </div>
+        </div>
          <br>
       <% end %>
     </div>
@@ -27,22 +27,22 @@
 
   <div style="margin-top: 120px; padding-left: 15%; width: 90%;">
 
-    <div class="fixed-title">
-    <h2><b> <%= @collection.name.upcase %></b></h2>
-    </div>
+      <div class="fixed-title">
+      <h2><b> <%= @collection.name.upcase %></b></h2>
+      </div>
 
-    <div>
-    <div style="border: 1px solid black; border-radius: 20px; padding: 24px; margin-top: 90px">
-    <div style="width: 50%;">
-      <h4 style="padding-bottom: 0; margin-bottom: 0;"><b>adicione novas fotos</b></h4>
-      <div style="color: white; padding-top: 0; margin-top: 0">
-    <%= simple_form_for :collection, url: collection_path(@collection), method: :patch do |f| %>
-     <%= f.input :photos, label: ' ', as: :file, input_html: { multiple: true } %>
-     <%= f.button :submit, 'SALVAR' %>
-     <% end %>
-     </div>
-     </div>
-  </div>
+      <div style="border: 1px solid black; width: 90%; border-radius: 20px; padding: 24px; margin-top: 90px">
+        <h4 style="padding-bottom: 0; margin-bottom: 0;"><b>adicione novas fotos</b></h4>
+        <br>
+        <%= simple_form_for :collection, url: collection_path(@collection), method: :patch do |f| %>
+        <% unless @collection.photo.attached? %>
+        <%= f.input :photo, label: 'banner', as: :file %>
+        <% end %>
+        <%= f.input :photos, label: 'sapatos', as: :file, input_html: { multiple: true } %>
+        <br>
+        <%= f.button :submit, 'SALVAR', class: "form-button-edit"  %>
+        <% end %>
+      </div>
 
 
     <div style="margin-top: 36px;">
@@ -51,7 +51,7 @@
       <div class="mini-fotos">
         <% @items.each do |item| %>
           <div>
-            <p class="small-text"> <%= link_to "×",
+            <p class="small-text-x"> <%= link_to "×",
               item_path(item),
               method: :delete %> </p>
           <%= cl_image_tag item.photo.key, class: "img-shoe" %>
@@ -73,7 +73,7 @@
         <% end %>
       </div>
     </div>
-  </div>
+
 
 
   </div>

@@ -1,5 +1,11 @@
 .mini-fotos {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 12px;
+}
+
+.mini-fotos-edit {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 12px;
 }

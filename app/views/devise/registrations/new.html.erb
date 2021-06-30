@@ -1,17 +1,15 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-4">
-      <div class="fixed-title">
         <h1><b>faça seu <br> cadastro </b></h1>
-      </div>
-
-      <div class="inputs" style="padding-left: 8px;">
+      <div class="inputs">
       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= f.error_notification %>
 
-        <div class="form-inputs" style="margin-top: 104px;">
+        <div class="form-inputs">
           <%= f.input :name,
                       label: 'nome',
+                      autofocus: true,
                       required: true,
                       input_html: { autocomplete: "nome" } %>
 
@@ -34,19 +32,16 @@
           <%= f.input :email,
            label: 'e-mail',
                       required: true,
-                      autofocus: true,
                       input_html: { autocomplete: "email" }%>
 
           <%= f.input :doc,
            label: 'cpf | cnpj',
                       required: true,
-                      autofocus: true,
                       input_html: { autocomplete: "documento" }%>
 
           <%= f.input :rg,
            label: 'rg',
                       required: true,
-                      autofocus: true,
                       input_html: { autocomplete: "documento" }%>
 
           <%= f.input :birth,
@@ -55,20 +50,17 @@
                       end_year: Time.now.year,
                       order: %i(day month year),
                       required: true,
-                      autofocus: true,
                       input_html: { autocomplete: "data de nascimento" }%>
 
           <%= f.input :street,
            label: 'endereço',
                       required: true,
-                      autofocus: true,
                       placeholder: 'r. lisboa, 33 apt 5 — centro, recife-PE',
                       input_html: { autocomplete: "endereço" }%>
 
           <%= f.input :cep,
            label: 'cep',
                       required: true,
-                      autofocus: true,
                       input_html: { autocomplete: "cep" }%>
 
           <%= f.input :password,
@@ -84,8 +76,102 @@
         </div>
         <div class="small-text" style="text-align: left">
           <%= f.input :politics, input_html: { checked: @user.politics = true },  label: 'DE ACORDO COM AS POLÍTICAS DE USO DE DADOS.', class: "small-text" %>
-          <%= link_to "↳ ver políticas de uso de dados", root_path %>
+
+          <!-- Button trigger modal -->
+
         </div>
+
+        <!-- Button trigger modal -->
+<button type="button" class="botao3" data-toggle="modal" data-target="#staticBackdrop">
+  → ver políticas
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" style="margin-top: 80px; padding-bottom: 80px;">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Políticas de Uso de Dados</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>
+
+          A Luiza Barcelos Calçados S.A, grupo de sociedades relacionadas, por meio de seus respectivos representantes legais, declaram ter apreciado e aprovado essa POLÍTICA DE PRIVACIDADE pelos termos a seguir expostos.
+            <br><br>
+            Responsável legal pelo tratamento dos dados: Michel Sousa Dias<br>
+            michel.dias@luizabarcelos.com.br <br><br>
+
+            Encarregado de Proteção de Dados: Fernanda Barcelos Gomes<br>
+            lgpd@luizabarcelos.com.br <br><br>
+
+              1.  Introdução <br>
+            NÓS da Luiza Barcelos Calçados S.A precisamos coletar e tratar seus dados para melhor atendê-lo(a) na plataforma SEEDING que são armazenadas em um banco de dados em nuvem, sendo certo que adotamos todas as medidas de salvaguardas para garantir a proteção de seus dados, nos termos do que exige a LGPD. 
+            Atuamos com total TRANSPARÊNCIA em mantê-lo(a) informado(a) sobre como a LGPD cria obrigações legais, as quais seguimos rigorosamente, no que diz respeito a coleta e uso dos seus dados pessoais e por conseguinte, direitos dos quais você é o destinatário(a), podendo exercê-los de acordo com a sua conveniência. 
+              <br><br>
+              2.  Objetivos, abrangência e público-alvo. <br>
+            São objetivos dessa Política estabelecer as diretrizes para proteção de dados, aquisição, coleta, tratamento, compartilhamento e eliminação, ou seja, de todas as fases e etapas de tratamento aos quais serão submetidos seus dados, considerando que a TRANSPARÊNCIA constituiu um dos nossos principais objetivos ao elaborar essa Política, que se  aplica a todos as PESSOAS FÍSICAS titulares de dados que se relacionam conosco por meio da plataforma Seeding.
+              <br><br>
+              3.  Controlador de Dados <br>
+            NÓS da Luiza Barcelos Calçados S.A somos os Controladores dos dados que coletamos, o que significa que determinamos para quais finalidades os seus dados pessoais e informações serão tratadas, mantidas e utilizadas e, esteja certo(a), de que assumimos a nossa responsabilidade como detentores dos propósitos gerais, princípios e definição das bases legais que subsidiam o uso e tratamento de seus dados de forma legal e lícita.
+            <br><br>
+
+              4.  Diretrizes gerais e específicas <br>
+            NÓS da Luiza Barcelos Calçados S.A, na qualidade de Controladores de seus dados, adotamos medidas de segurança, técnicas e administrativas aptas a proteger os dados pessoais e pessoais sensíveis, quando for o caso, de acessos não autorizados e de situações acidentais ou ilícitas de destruição, perda, alteração, comunicação ou qualquer forma de tratamento inadequado ou ilícito.
+            Também, no âmbito de nossas competências e responsabilidades, somos os responsáveis pelo tratamento de dados pessoais, individualmente ou por meio de associações, e para tanto, nos termos do que autoriza a LGPD, poderemos elaborar regras de boas práticas e de governança para estabelecermos as condições de organização, o regime de funcionamento, os procedimentos, incluindo reclamações e petições de titulares, as normas de segurança, os padrões técnicos, as obrigações específicas para os diversos envolvidos no tratamento, as ações educativas, os mecanismos internos de supervisão e de mitigação de riscos e outros aspectos relacionados ao tratamento de dados pessoais, que poderão estar descritas nessa Política e em outras normas a serem por NÓS estabelecidas.
+            <br><br>A gestão dos dados conforme esta Política é de nossa responsabilidade imediata e se dará conforme descrito nessa política, a partir da execução de processos e monitoramentos descritos abaixo:
+              <br>1.  Todo tratamento de base de dados deverá passar por criterioso processo de mapeamento, avaliação de finalidade e necessidade, bem como deverá ser atribuído a todos os dados coletados as respectivas bases legais que subsidiam e legalizam o respectivo tratamento; 
+              <br>2.  Esta política deve ser revista no mínimo anualmente; e 
+              <br>3.  Havendo a não observância ou constatação de não aderência a essa Política, tal fato deve ser informado imediatamente ao Encarregado de Proteção de Dados. 
+              <br><br>
+              5.  Princípios de proteção de dados  <br>
+            NÓS da Luiza Barcelos Calçados S.A garantimos que as informações e dados pessoais são tratados legalmente e corretamente, e por isso aderimos aos Princípios de Proteção de Dados, consagrados pela LGPD, conforme segue: (i) seus dados serão tratados de forma justa e lícitas; sendo que não o serão a menos que condições específicas e próprias sejam atendidas; (ii) serão obtidos para um ou mais dos propósitos especificados na Lei, e não serão tratados se houver incompatibilidade com esse ou esses propósitos; (iii) devem ser adequados, relevantes e não excessivos em relação a esses propósitos; (iv) devem ser precisos e mantidos atualizados; (v) não serão mantidos por mais tempo do que o necessário; (vi) serão processados em observância dos direitos dos titulares de dados nos termos da Lei, e; (vii) serão mantidos seguros pelos Controladores que tomarão as medidas técnicas e outras apropriadas para evitar tratamento não autorizado, ilegal, perda acidental, destruição ou danos a informações pessoais.
+            <br><br>
+              6.  Transferência Internacional de Dados: <br>
+            Alguns de seus dados pessoais, ou todos eles, poderão ser transferidos para o exterior, por exemplo quando são armazenados pela Luiza Barcelos Calçados S.A  em servidores de computação em nuvem localizados fora do Brasil. Para isso, [NOME DA EMPRESA] observa todos os requerimentos estabelecidos pela legislação vigente e adota as melhores práticas de segurança e privacidade para garantir a integridade e confidencialidade dos seus dados pessoais.
+            <br><br>
+              7.  Finalidades e bases legais para o tratamento de dados <br>
+            NÓS da Luiza Barcelos Calçados S.A iremos coletar dados pessoais e dados pessoais sensíveis de titulares para determinadas finalidades, conforme a seguir descrito, e somente os que são os estritamente necessários e que estejam devidamente embasados pelas hipóteses legais previstas na LGPD, conforme segue:
+            Dado tratado: Nome completo, CPF, Endereço completo, Email, Telefone. Finalidade do Tratamento: Emissão de nota fiscal de remessa de mercadorias para envio de brindes em felicitações pelo aniversário do titular. Base legal da coleta: Cumprimento de obrigação legal.
+            Dado tratado: RG, Data de nascimento, Numeração do calçado. Finalidade do Tratamento: Envio de brindes aos titulares em felicitações pelo aniversário do titular, em face de contratos de prestações de serviços firmados entre o controlador e o titular. Base legal da coleta: Execução de contrato ou de procedimentos preliminares relacionados a contrato do qual seja parte do titular.
+              <br><br>
+              8.  Direitos dos Titulares <br>
+            NÓS da Luiza Barcelos Calçados S.A  lhe asseguramos pleno acesso para garantia e exercício de seus direitos na qualidade de Titular de dados pessoais e pessoais sensíveis que eventualmente coletamos. 
+            Esclarecemos que o titular também tem direito a obter do controlador, em relação aos seus dados que são por ele tratados, a qualquer momento e mediante requisição, conforme nossa Política de Atendimento aos Titulares. Para ter acesso clique aqui!
+            <br><br>
+              9.   Registro de Atividades: <br>
+            Podemos registrar as atividades que você realiza quando utiliza nosso aplicativo, site ou blogs, criando, quando possível e aplicável, logs (registros de atividades efetuadas nos sites e aplicativos e serviços) que conterão: o endereço IP, acesso e ações realizadas por você no serviço disponibilizado, data e hora de cada ação realizada e informações sobre o dispositivo utilizado, tais como a versão de sistema operacional, navegador e geolocalização.
+            Também podemos utilizar certas tecnologias, próprias ou de terceiros, de monitoramento das atividades realizadas enquanto você acessa nossos sites e blogs, tais como:
+            Cookies: são arquivos de internet que armazenam de forma temporária o que você está visitando na rede. A [NOME DA EMPRESA] possui cookies em seus websites e blogs e também recebe informações de parceiros a respeito de cookies inseridos nos seus respectivos websites. Os cookies podem ser utilizados para diversos propósitos, incluindo lembrar-se de você e de suas preferências, persistir informações relacionadas a suas atividades no site visitado, ou coletar informações que podem ser usadas para oferecer conteúdo de uma forma personalizada. Nossos sites também podem utilizar objetos armazenados localmente para fornecer determinado conteúdo, tais como vídeo sob demanda, videoclipes ou animação.
+            Nós temos cookies de terceiros ativados em nosso site. As práticas de privacidade serão regidas pelas políticas de privacidade e pelos termos de uso desses terceiros, de forma que não podemos controlar ou nos responsabilizar pelas práticas e conteúdo de privacidade de terceiros. Por isso destacamos que você pode, a qualquer momento, bloquear o uso dos cookies ativando uma configuração no seu navegador de internet e sua capacidade de limitar os cookies estará sujeita às configurações e limitações do seu navegador. Você também pode excluir os cookies existentes através das mesmas configurações do seu navegador de internet. Caso você opte por desativar os cookies, você poderá continuar navegando nos sites e nos blogs, mas algumas partes das páginas poderão deixar de funcionar.
+            Web beacon: Web beacon é uma técnica que permite mapear quem está visitando uma determinada página da web, identificando o seu comportamento com diferentes sites ou servidores da web.
+            Ferramentas de analytics: Essas ferramentas podem coletar informações como a forma que você visita um site, incluindo quais páginas e quando você visita tais páginas, além de outros sites que foram visitados antes, entre outras.
+            Todas as tecnologias utilizadas por nós sempre respeitarão os termos desta Política de Privacidade.
+            <br><br>
+              10. Fontes dos dados e decisões automatizadas <br>
+            NÓS da Luiza Barcelos Calçados S.A coletamos seus dados principalmente se você mesmo nos fornecer. Informamos que seus dados não são submetidos a nenhuma espécie ou tipo de decisão automatizada.
+            <br><br>
+              11. Declarações finais <br>
+            Todos os usuários ou Titulares têm o direito de acessar as nossas informações  e descobrir mais sobre a nossa história acessando o nosso site
+            <br>
+            NÓS da Luiza Barcelos Calçados S.A  tomaremos medidas razoáveis para garantir que essas informações sejam mantidas sempre atualizadas e garantimos que: (i) o nosso Encarregado de Proteção de Dados poderá atendê-lo, pois tem a responsabilidade específica para garantir o cumprimento da proteção de dados; (ii) todos os envolvidos no tratamento dos dados pessoais entendem que são contratualmente responsáveis por seguir uma boa prática de proteção de dados; (iii) todos que processam informações pessoais são devidamente treinados para fazê-lo; (iv) todos que processam informações pessoais são devidamente supervisionados; (v) revisaremos e auditaremos regularmente as formas como mantemos, gerenciamos e usamos suas informações pessoais; (vi) avaliamos regularmente nossos métodos e desempenho em relação ao manuseio de informações pessoais; (vii) todos os funcionários estão cientes de que uma violação das regras e procedimentos identificados nesta Política pode levar a ações disciplinares contra eles.
+            <br>
+            Esta política será atualizada anualmente ou em período menos, conforme necessário para refletir as melhores práticas em gestão, segurança e controle de dados e para garantir o cumprimento de quaisquer alterações feitas na LGPD e GDPR.
+            <br>
+            Em caso de dúvidas ou dúvidas em relação a esta política, entre em contato com o<br>
+            Encarregado de Proteção de Dados: Fernanda Barcelos Gomes<br>
+            lgpd@luizabarcelos.com.br
+
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
         <div class="form-actions">

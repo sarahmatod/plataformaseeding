@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="fixed-title">
+    <h3>OI,  <%= current_user.name.upcase %>. </h3>
+    <h3 style="margin-bottom: 16px;">essas foram suas escolhas:</h3>
+    <%= link_to "editar", edit_user_choice_path(@user_choice), class: "botao2" %>
+    <br>
+    <p style="color: white;">—</p>
+  </div>
+
+  <div style="margin-top: 140px">
+    <% @votes.each do |vote| %>
+    <%= cl_image_tag vote.item.photo.key, width: 112, class: "img-shoe-edit" %>
+    <% end %>
+  </div>
+</div>
+

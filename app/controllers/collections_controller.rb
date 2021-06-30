@@ -1,11 +1,12 @@
 class CollectionsController < ApplicationController
-  before_action :set_collection, only: %i[show edit update]
+  before_action :set_collection, only: %i[show edit update destroy]
   before_action do
     authorize(Collection)
   end
 
   # SHOW => RESULTS PAGES
   def show
+
     no_zero_votes = @collection.items.select do |item|
       item.votes.count >= 1
     end
@@ -19,7 +20,7 @@ class CollectionsController < ApplicationController
 
   def create
     active_false
-    @collection = Collection.create(name: collection_params[:name], user: current_user, active: false)
+    @collection = Collection.create(name: collection_params[:name], photo: collection_params[:photo], user: current_user, active: false)
     add_shoes_to_collection
     redirect_to edit_collection_path(@collection)
   end
@@ -73,6 +74,24 @@ class CollectionsController < ApplicationController
     redirect_to edit_collection_path(@collection)
   end
 
+  def destroy
+    if @collection.user_choices != []
+      @collection.user_choices.each do |choice|
+        choice.votes.each do |vote|
+          vote.delete
+        end
+        choice.delete
+      end
+    end
+
+    @collection.items.each do |item|
+      item.delete
+    end
+    @collection.delete
+
+    redirect_to new_collection_path
+  end
+
   private
 
   def add_shoes_to_collection
@@ -84,7 +103,7 @@ class CollectionsController < ApplicationController
   end
 
   def collection_params
-    params.require(:collection).permit(:name, photos: [])
+    params.require(:collection).permit(:name, :photo, photos: [])
   end
 
   def set_collection

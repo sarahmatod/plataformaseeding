@@ -1,0 +1,43 @@
+
+<div class="display-grid-edit" style="height: 100vh">
+
+  <div style="margin-left: 48px; margin-right: 36px;">
+    <h3 style="margin-top: 98px;"><b>OI, <%= current_user.name.upcase %>.</b></h3>
+      <h3> <b> remova itens de sua seleção: </b></h3>
+      <br>
+        <div class="mini-fotos-edit">
+         <% @votes.each do |vote| %>
+          <div>
+            <p class="small-text-edit"> <%= link_to "×",
+                vote_path(vote),
+                method: :delete %> </p>
+                <%= cl_image_tag vote.item.photo.key, width: 104, class: "img-shoe-edit" %>
+          </div>
+        <% end %>
+      </div>
+
+</div>
+
+<div style="border-left: 1px solid black;">
+  <h3 style="margin-top: 98px; color:white;">–</h3>
+  <h3 style="text-align: center;"> ou selecione novos itens:</h3>
+  <div class="main-form">
+
+  <% unless Collection.last == nil %>
+  <% if  Collection.last.active == true %>
+      <%= simple_form_for :user_choice, url: '/user_choices' do |f| %>
+        <%= f.input :vote,
+                    collection: @last_collection.map { |item| cl_image_tag item.photo.key, width: 380 },
+                    as: :check_boxes,
+                    required: true,
+                    include_blank: false,
+                    include_hidden: false %>
+                    <br>
+        <%= f.button :submit, 'ENVIAR', class: "form-button" %>
+      <% end %>
+  <% end %>
+  <% end %>
+  </div>
+
+
+  </div>
