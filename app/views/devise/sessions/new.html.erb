@@ -19,7 +19,8 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "INICIAR SESSÃO" %>
+    <%= button_tag "INICIAR SESSÃO", class: "button", role: "button", data: { disable_with: "<i class='fas fa-spinner fa-spin'></i>".html_safe} %>
+
   </div>
 <% end %>
 </div>

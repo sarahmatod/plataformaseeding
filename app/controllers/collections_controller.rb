@@ -65,6 +65,7 @@ class CollectionsController < ApplicationController
     @items.each do |item|
       @item = item
     end
+
   end
 
   def update

@@ -1,43 +1,49 @@
 
-<div class="display-grid-edit" style="height: 100vh">
+<div class="row">
 
-  <div style="margin-left: 48px; margin-right: 36px;">
-    <h3 style="margin-top: 98px;"><b>OI, <%= current_user.name.upcase %>.</b></h3>
-      <h3> <b> remova itens de sua seleção: </b></h3>
-      <br>
-        <div class="mini-fotos-edit">
+  <div class="col-12 col-md-5">
+    <div style="padding-left: 10%; padding-right: 10%;">
+      <h3 style="margin-top: 98px;"><b>OI, <%= current_user.name.upcase %>.</b></h3>
+      <p>AQUI VOCÊ PODE EDITAR SUA SELEÇÃO.</p>
+      <hr>
+      <h3> <b>remova itens: </b></h3>
+        <div class="mini-fotos-edit" style="width: 50%;">
          <% @votes.each do |vote| %>
           <div>
             <p class="small-text-edit"> <%= link_to "×",
                 vote_path(vote),
-                method: :delete %> </p>
+                method: :delete, data: { disable_with: "<i class='fas fa-spinner fa-spin'></i>"} %> </p>
                 <%= cl_image_tag vote.item.photo.key, width: 104, class: "img-shoe-edit" %>
           </div>
         <% end %>
       </div>
+      <hr>
+      <% user_choice = current_user.user_choices[-1] %>
+      <%= link_to "concluir remoções", user_choice_path(user_choice), class: "botao2", data: { disable_with: "<i class='fas fa-spinner fa-spin'></i>"} %>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-7" style="border-left: 1px solid black;">
+    <div class="second-column">
+    <h3 style="text-align: center;"> ou selecione novos:</h3>
+      <div class="main-form">
+
+        <% unless Collection.last == nil %>
+        <% if  Collection.last.active == true %>
+          <%= simple_form_for :user_choice, url: '/user_choices' do |f| %>
+            <%= f.input :vote,
+                        collection: @last_collection.map { |item| cl_image_tag item.photo.key, width: 380 },
+                        as: :check_boxes,
+                        required: true,
+                        include_blank: false,
+                        include_hidden: false %>
+                        <br>
+            <%= button_tag "ENVIAR", class: "form-button", role: "button", data: { disable_with: "<i class='fas fa-spinner fa-spin'></i> ".html_safe} %>
+        <% end %>
+      <% end %>
+      <% end %>
+    </div>
+    </div>
+  </div>
 
 </div>
-
-<div style="border-left: 1px solid black;">
-  <h3 style="margin-top: 98px; color:white;">–</h3>
-  <h3 style="text-align: center;"> ou selecione novos itens:</h3>
-  <div class="main-form">
-
-  <% unless Collection.last == nil %>
-  <% if  Collection.last.active == true %>
-      <%= simple_form_for :user_choice, url: '/user_choices' do |f| %>
-        <%= f.input :vote,
-                    collection: @last_collection.map { |item| cl_image_tag item.photo.key, width: 380 },
-                    as: :check_boxes,
-                    required: true,
-                    include_blank: false,
-                    include_hidden: false %>
-                    <br>
-        <%= f.button :submit, 'ENVIAR', class: "form-button" %>
-      <% end %>
-  <% end %>
-  <% end %>
-  </div>
-
-
-  </div>

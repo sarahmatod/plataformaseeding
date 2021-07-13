@@ -1,3 +1,5 @@
+
+
 .mini-fotos {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -8,4 +10,23 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 12px;
+
+}
+
+.second-column {
+    margin-top: 98px;
+  }
+
+@media(max-width: 1048px) {
+  .mini-fotos-edit  {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media(max-width: 768px) {
+  .second-column {
+    margin-top: 28px;
+    padding-top: 24px;
+    border-top: 1px solid black;
+  }
 }

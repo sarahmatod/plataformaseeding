@@ -7,11 +7,22 @@
 }
 
 .form-button {
+  background-color: $black;
+  color: $white;
+  padding: 8px 18px 8px 18px;
+  font-family: 'Effra';
+  border-radius: 6px;
   margin-top: 44px;
   position: absolute;
   width: 20%;
   right: 10px;
   bottom: -72px;
+
+  &:hover{
+    background-color: $dark-gray;
+    color: $white;
+    text-decoration: none;
+  }
 }
 
 .form-button-edit {

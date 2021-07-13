@@ -11,7 +11,7 @@
 
         <div style="width: 80%; padding: 12px; background-color: #F4F4EE; border-radius: 4px;">
            <h3><%= collection.name %> </h3><br>
-           <p><%= link_to "fotos", edit_collection_path(collection), class: "botao2" %> <%= link_to "add. fotos", edit_collection_path(collection), class: "botao2" %> <%= link_to "resultados", collection_path(collection), class: "botao2" %> <%= link_to "deletar", collection_path(collection), method: :delete, data: { confirm: "DELETAR CAMPANHA?" }, class: "btn-sm-bl" %></p>
+           <p><%= link_to "fotos", edit_collection_path(collection), class: "botao2", data: { disable_with: "<i class='fas fa-spinner fa-spin'></i>"} %> <%= link_to "add. fotos", edit_collection_path(collection), class: "botao2", data: { disable_with: "<i class='fas fa-spinner fa-spin'></i>"} %> <%= link_to "resultados", collection_path(collection), class: "botao2", data: { disable_with: "<i class='fas fa-spinner fa-spin'></i>"} %> <%= link_to "deletar", collection_path(collection), method: :delete, data: { confirm: "DELETAR CAMPANHA?" }, class: "btn-sm-bl" %></p>
            <% if collection == Collection.last %>
            <hr>
            <p> <% if collection.active == false || nil %>  <%= link_to "ATIVAR", getavailable_path(collection), class: "btn-sm-bl" %>  <% else %> <%= link_to "DESATIVAR", getunavailable_path(collection), class: "btn-sm-bl" %> <% end %> </p>
@@ -38,7 +38,8 @@
       <%= f.input :photo, label: 'banner:', as: :file %>
       <%= f.input :photos, label: 'sapatos:', as: :file, input_html: { multiple: true } %>
       <br>
-      <%= f.button :submit, 'SALVAR' %>
+      <%= button_tag "SALVAR", class: "button", role: "button", data: { disable_with: "<i class='fas fa-spinner fa-spin'></i>".html_safe} %>
+
     <% end %>
 
   </div>

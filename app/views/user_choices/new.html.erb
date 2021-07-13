@@ -41,7 +41,7 @@
                     include_blank: false,
                     include_hidden: false %>
                     <br>
-        <%= f.button :submit, 'ENVIAR', class: "form-button" %>
+      <%= button_tag "ENVIAR", class: "form-button", role: "button", data: { disable_with: "<i class='fas fa-spinner fa-spin'></i>".html_safe} %>
       <% end %>
   <% end %>
   <% end %>
