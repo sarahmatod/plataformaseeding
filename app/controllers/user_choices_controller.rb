@@ -4,7 +4,7 @@ class UserChoicesController < ApplicationController
     authorize UserChoice
 
     @last_active_collection = Collection.where(active: true).last
-    @last_collection = Item.all.where(collection: @last_active_collection)
+    @last_collection = Item.all.where(collection: @last_active_collection).sort_by { |item| item.name }
     @user_voted = UserChoice.where(collection: @last_active_collection, user: current_user)
   end
 
