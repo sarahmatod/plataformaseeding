@@ -63,6 +63,8 @@ class CollectionsController < ApplicationController
     @collections = Collection.all.order(created_at: :desc)
     @items = Item.all.where(collection: @collection)
     @items = @items.sort_by { |item| item.name }
+    @items = @items.uniq { |h| h[:name] }
+
     @items.each do |item|
       @item = item
     end
