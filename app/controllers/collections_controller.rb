@@ -72,8 +72,11 @@ class CollectionsController < ApplicationController
   end
 
   def update
-    unless collection_params[:photos] == [] || nil
-    add_shoes_to_collection
+    if collection_params[:photos]
+      add_shoes_to_collection
+    end
+    if collection_params[:photo]
+    @collection.update(collection_params)
     end
     redirect_to edit_collection_path(@collection)
   end
@@ -113,4 +116,5 @@ class CollectionsController < ApplicationController
   def set_collection
     @collection = Collection.find(params[:id])
   end
+
 end
