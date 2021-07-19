@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'user_choices#new'
+
   get 'getavailable', to: "collections#getavailable"
   patch 'available', to: 'collections#available'
   get 'getunavailable', to: "collections#getunavailable"
