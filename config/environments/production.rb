@@ -10,7 +10,7 @@ Rails.application.configure do
     password:ENV["GMAIL_PASSWORD"]
   }
 
-  config.action_mailer.default_url_options = { :host => 'plataformalb-teste.herokuapp.com' }
+  config.action_mailer.default_url_options = { :host => 'seedingluizabarcelos.herokuapp.com' }
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
