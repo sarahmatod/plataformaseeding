@@ -6,11 +6,12 @@ class CollectionsController < ApplicationController
 
   # SHOW => RESULTS PAGES
   def show
-
     no_zero_votes = @collection.items.select do |item|
       item.votes.count >= 1
     end
     @items = no_zero_votes.sort_by { |item| item.votes.count }.reverse
+
+
   end
 
   def new

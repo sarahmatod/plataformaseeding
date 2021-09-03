@@ -33,6 +33,7 @@ gem 'cloudinary'
 gem 'pundit'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
+gem 'pdfmonkey'
 
 
 gem 'autoprefixer-rails'
