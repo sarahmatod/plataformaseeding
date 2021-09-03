@@ -7,3 +7,5 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.create!(email: "admin@luizabarcelos.com.br", name: "equipe Luiza Barcelos", admin: true, password: "123123")
+
+User.create!(email: "gui@luizabarcelos.com.br", name: "gui legnani", admin: false, password: "123123")
