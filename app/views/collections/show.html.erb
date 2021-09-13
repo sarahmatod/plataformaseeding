@@ -50,10 +50,13 @@
   <div class="tab-pane" id="client" role="tabpanel" aria-labelledby="client-tab">
     <div class="tab-pane" id="product" role="tabpanel" aria-labelledby="product-tab">
     <% @collection.user_choices.each do |user_choice| %>
+      <% if user_choice.user.admin == false %>
+
 
     <div class="row" style="margin-bottom: 18px;">
 
       <div class="col-4" style="padding-right: 24px;">
+
         <h3> <%= link_to "#{user_choice.user.name} #{user_choice.user.surname}", user_choice_path(user_choice) %>  </h3><br>
         <% if user_choice.user.instagram %>
         <% instagram = user_choice.user.instagram.upcase.gsub('@','').gsub(/(https:\/\/)*(www.)*(instagram.com)\//, '').gsub('/','') %>
@@ -70,6 +73,7 @@
         <p>end.: <%= user_choice.user.street %> <br> </p>
         cep: <%= user_choice.user.cep %><br>
         <p>políticas de uso de dados: <% if user_choice.user.politics == true %> concorda  <% else %>  não concorda <% end %> </p>
+
       </div>
 
       <div class="col-7 results-grid">
@@ -93,7 +97,7 @@
           </div>
         <% end %>
       </div>
-
+      <% end %>
     </div>
     <hr>
     <% end %>
