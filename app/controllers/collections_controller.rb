@@ -10,8 +10,6 @@ class CollectionsController < ApplicationController
       item.votes.count >= 1
     end
     @items = no_zero_votes.sort_by { |item| item.votes.count }.reverse
-
-
   end
 
   def new

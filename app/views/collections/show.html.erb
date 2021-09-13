@@ -55,10 +55,16 @@
 
       <div class="col-4" style="padding-right: 24px;">
         <h3> <%= link_to "#{user_choice.user.name} #{user_choice.user.surname}", user_choice_path(user_choice) %>  </h3><br>
+        <% if user_choice.user.instagram %>
         <% instagram = user_choice.user.instagram.upcase.gsub('@','').gsub(/(https:\/\/)*(www.)*(instagram.com)\//, '').gsub('/','') %>
         <p>instagram:<%= link_to "@#{instagram.downcase}", "https://www.instagram.com/#{instagram}", target:'_blank' %> <br>
+        <% end %>
+        <% if user_choice.user.email %>
         e-mail: <%= user_choice.user.email.downcase %> <br>
+        <% end %>
+        <% if user_choice.user.numer %>
         numeração: <%= user_choice.user.numer %> </p>
+        <% end %>
         <p>cpf–cnpj: <%= user_choice.user.doc %> | rg: <%= user_choice.user.rg %> <br>
         nascimento: <%= user_choice.user.birth %> </p>
         <p>end.: <%= user_choice.user.street %> <br> </p>
