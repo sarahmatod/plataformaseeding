@@ -1,0 +1,16 @@
+<div class="container">
+    <h3><%= @user.name.upcase %> | n. <%= @user.numer %></h3><br>
+   <%= link_to "voltar para resultados", collection_path(@user.user_choices[-1].collection), class: "botao2", data: { disable_with: "<i class='fas fa-spinner fa-spin'></i>"} %>
+
+
+  <div class="user-flex" style="margin-top: 64px;">
+    <% @votes.each do |vote| %>
+      <div style="margin-right: 24px;">
+        <%= cl_image_tag vote.item.photo.key, width: 216, class: "img-shoe-edit" %>
+        <p style="padding-left: 16px;"><%= vote.item.name %></p>
+      </div>
+    <% end %>
+  </div>
+
+</div>
+

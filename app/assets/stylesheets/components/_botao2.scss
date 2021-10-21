@@ -17,6 +17,26 @@
 
 }
 
+.botao4 {
+  background-color: #FFEAFC;
+  font-size: 12px;
+  border: 1px solid #FF5F04;
+  padding: 4px 16px 4px 16px;
+  border-radius: 20px;
+  text-decoration: none;
+  color: #FF5F04;
+  margin-right: 8px;
+  text-align: center;
+
+  &:hover {
+    background-color: #FF5F04;
+    text-decoration: none;
+    color: #FFEAFC;
+    transition: 1s;
+  }
+
+}
+
 .botao3 {
   background-color: white;
   font-size: 12px;

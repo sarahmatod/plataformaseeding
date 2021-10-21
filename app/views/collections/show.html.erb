@@ -15,7 +15,7 @@
 
 <div class="tab-content" style="margin-top: 200px; padding-left: 96px; padding-right: 96px; padding-top: 36px;">
 
-    <div class="tab-pane active" id="product" role="tabpanel" aria-labelledby="product-tab">
+    <div class="tab-pane" id="product" role="tabpanel" aria-labelledby="product-tab">
     <% @items.each do |item| %>
       <div class="row" style="padding-right: 36px;">
         <div class="col-3">
@@ -47,7 +47,7 @@
     </div>
 
 
-  <div class="tab-pane" id="client" role="tabpanel" aria-labelledby="client-tab">
+  <div class="tab-pane active" id="client" role="tabpanel" aria-labelledby="client-tab">
     <div class="tab-pane" id="product" role="tabpanel" aria-labelledby="product-tab">
     <% @collection.user_choices.each do |user_choice| %>
       <% if user_choice.user.admin == false %>
@@ -57,7 +57,7 @@
 
       <div class="col-4" style="padding-right: 24px;">
 
-        <h3> <%= link_to "#{user_choice.user.name} #{user_choice.user.surname}", user_choice_path(user_choice) %>  </h3><br>
+        <h3> <%= link_to "#{user_choice.user.name} #{user_choice.user.surname}", user_path(user_choice.user) %>  </h3><br>
         <% if user_choice.user.instagram %>
         <% instagram = user_choice.user.instagram.upcase.gsub('@','').gsub(/(https:\/\/)*(www.)*(instagram.com)\//, '').gsub('/','') %>
         <p>instagram:<%= link_to "@#{instagram.downcase}", "https://www.instagram.com/#{instagram}", target:'_blank' %> <br>
@@ -68,10 +68,7 @@
         <% if user_choice.user.numer %>
         numeração: <%= user_choice.user.numer %> </p>
         <% end %>
-        <p>cpf–cnpj: <%= user_choice.user.doc %> | rg: <%= user_choice.user.rg %> <br>
-        nascimento: <%= user_choice.user.birth %> </p>
-        <p>end.: <%= user_choice.user.street %> <br> </p>
-        cep: <%= user_choice.user.cep %><br>
+
         <p>políticas de uso de dados: <% if user_choice.user.politics == true %> concorda  <% else %>  não concorda <% end %> </p>
 
       </div>
