@@ -5,6 +5,9 @@
 
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+User.all.each do |user|
+  user.delete
+end
 
 User.create!(email: "admin@luizabarcelos.com.br", name: "equipe Luiza Barcelos", admin: true, password: "123123")
 
