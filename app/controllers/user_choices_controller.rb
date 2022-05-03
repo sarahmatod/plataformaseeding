@@ -15,7 +15,7 @@ class UserChoicesController < ApplicationController
     @last_collection = Item.all.where(collection: last_active_collection)
 
     user_choice_params[:vote].each do |vote|
-      image_code = vote.split('development/')[1][0..-5]
+      image_code = vote.split('production/')[1][0..-5]
       matched = @last_collection.select { |shoe| shoe.photo.key == image_code }
       voted_shoe = matched.first
       Vote.create(user_choice: @user_choice, item: voted_shoe)
