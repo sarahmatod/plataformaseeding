@@ -25,13 +25,13 @@
 
 
 
-  <div style="margin-top: 120px; padding-left: 15%; width: 90%;">
+  <div class="scrollbar" style="margin-top: 120px; padding-left: 48px; width: 90%;">
 
-      <div class="fixed-title">
+      <div >
       <h2><b> <%= @collection.name.upcase %></b></h2>
       </div>
 
-      <div style="border: 1px solid black; width: 90%; border-radius: 20px; padding: 24px; margin-top: 90px">
+      <div style="border: 1px solid black; width: 90%; border-radius: 20px; padding: 24px; margin-top:32px;">
         <h4 style="padding-bottom: 0; margin-bottom: 0;"><b>adicione novas fotos</b></h4>
         <br>
         <%= simple_form_for :collection, url: collection_path(@collection), method: :patch do |f| %>
@@ -81,6 +81,3 @@
 
 
 </div>
-
-
-
